@@ -25,7 +25,7 @@ home:
     geographic:
       title: Geographic distribution
       description: >-
-        Pick a province on the map and get the inventory of taxa recorded
+        Pick a region on the map and get the inventory of taxa recorded
         there.
       cta: Open the map
 
@@ -95,9 +95,9 @@ search:
   geographic:
     title: Geographic distribution
     count: '{total} species recorded'
-    subtitle: Pick a province on the map to see its inventory.
+    subtitle: Pick a region on the map to see its inventory.
     no_selection: No selection
-    prompt: Click a province on the map.
+    prompt: Click a region on the map.
     no_records: 'No records for {region}.'
     error: 'Could not load the inventory: {message}'
 

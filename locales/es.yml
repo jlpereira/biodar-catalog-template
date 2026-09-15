@@ -448,7 +448,7 @@ home:
     geographic:
       title: Distribución geográfica
       description: >-
-        Elegí una provincia en el mapa y obtené el inventario de taxones
+        Elegí una región en el mapa y obtené el inventario de taxones
         registrados allí.
       cta: Abrir el mapa
 
@@ -519,9 +519,9 @@ search:
   geographic:
     title: Distribución geográfica
     count: '{total} especies registradas'
-    subtitle: Seleccioná una provincia en el mapa para ver su inventario.
+    subtitle: Seleccioná una región en el mapa para ver su inventario.
     no_selection: Sin selección
-    prompt: Hacé clic en una provincia del mapa.
+    prompt: Hacé clic en una región del mapa.
     no_records: 'No hay registros para {region}.'
     error: 'No se pudo cargar el inventario: {message}'
 

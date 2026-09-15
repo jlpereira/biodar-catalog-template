@@ -36,8 +36,11 @@
 
             <div class="min-w-0">
               <div class="border-b border-base-border px-6 py-4">
+                <!-- Only a subdivision needs its country above it. Uruguay is
+                     picked as a country, so the eyebrow would just repeat the
+                     heading. -->
                 <p
-                  v-if="selectedRegion"
+                  v-if="selectedRegion?.stateProvince"
                   class="text-xs font-medium uppercase tracking-wider text-base-soft"
                 >
                   {{ selectedRegion.country }}
@@ -175,7 +178,7 @@ function currentPalette() {
     ? THEME_FILLS.dark
     : THEME_FILLS.light
 
-  // Read the accent straight from the theme so the selected province matches
+  // Read the accent straight from the theme so the selected region matches
   // the rest of the site, in both light and dark.
   const accent = getComputedStyle(document.documentElement)
     .getPropertyValue('--tp-accent')
