@@ -1,7 +1,9 @@
 <template>
   <!-- Explore: horizontal rows with a leading index, not icon tiles -->
-  <section class="flex flex-col border-t border-base-border bg-base-foreground">
-    <div class="container mx-auto my-auto w-full px-6 py-16">
+  <section
+    class="flex flex-col border-t border-base-border bg-base-foreground px-6"
+  >
+    <div class="container mx-auto my-auto py-16">
       <h2 class="text-2xl font-bold tracking-tight text-base-content">
         {{ $t('home.sections.title') }}
       </h2>

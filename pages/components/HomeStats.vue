@@ -1,7 +1,7 @@
 <template>
   <ProjectStats
     tag="dl"
-    class="flex flex-wrap gap-x-10 gap-y-6 border-t border-base-border pt-8"
+    class="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-base-border pt-8 sm:flex sm:flex-wrap sm:gap-x-10"
     :data="STAT_KEYS"
   >
     <template #default="{ type, value }">

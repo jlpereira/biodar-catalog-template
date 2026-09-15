@@ -39,7 +39,7 @@
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-black/75 to-transparent"
+            class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/85 via-black/45 to-transparent"
           />
 
           <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-white">
@@ -94,7 +94,9 @@
       </button>
     </div>
 
-    <div class="mt-4 flex items-center justify-between gap-4">
+    <div
+      class="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
+    >
       <div class="flex items-center gap-2">
         <button
           v-for="(slide, index) in SLIDES"

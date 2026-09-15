@@ -2,10 +2,10 @@
   <div class="bg-base-background flex min-h-full flex-col">
     <!-- Editorial split: copy + search on the left, autoplaying gallery on the right -->
     <section
-      class="container mx-auto shrink-0 px-6 pt-12 pb-16 sm:pt-16 lg:pt-20"
+      class="shrink-0 px-6 pt-12 pb-16 sm:pt-16 lg:pt-20"
     >
       <div
-        class="grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16"
+        class="container mx-auto grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16"
       >
         <div>
           <span
