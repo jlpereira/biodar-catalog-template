@@ -1,104 +1,125 @@
 <template>
-  <div class="h-full">
-    <div class="sticky top-0 z-10 bg-base-foreground shadow">
-      <div
-        class="container mx-auto px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2"
-      >
-        <h1 class="text-base font-semibold text-base-content">
+  <div class="bg-base-background min-h-full">
+    <div class="px-4">
+      <div class="container mx-auto pt-10 pb-6">
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">
           {{ $t('search.geographic.title') }}
         </h1>
-        <p class="text-sm text-base-soft">
+
+        <p class="mt-2 max-w-2xl text-sm text-base-soft">
           {{ $t('search.geographic.subtitle') }}
         </p>
       </div>
     </div>
 
-    <div class="container mx-auto py-8 bg-base-foreground shadow h-full">
-      <div class="grid md:grid-cols-2 gap-8 pr-0">
-        <div class="h-[600px]">
-          <div ref="mapContainer" />
-        </div>
-
-        <div>
-          <div class="bg-primary text-primary-content px-4 py-1">
-            <ul class="flex flex-wrap items-center gap-x-2 text-sm">
-              <li>
-                {{
-                  selectedRegion
-                    ? selectedRegion.country
-                    : $t('search.geographic.no_selection')
-                }}
-              </li>
-              <li
-                v-if="selectedRegion && selectedRegion.stateProvince"
-                class="before:content-['/'] before:mr-2"
-              >
-                {{ selectedRegion.stateProvince }}
-              </li>
-            </ul>
+    <div class="px-4 pb-14">
+      <div class="container mx-auto">
+        <div
+          class="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-10"
+        >
+          <!-- The map is the control for this page, so on wide screens it
+               stays put while the inventory beside it scrolls. -->
+          <div class="min-w-0 lg:sticky lg:top-4 lg:self-start">
+            <div
+              class="overflow-hidden rounded-2xl border border-base-border bg-base-foreground p-3"
+            >
+              <!-- jsvectormap sizes itself from this wrapper; giving the
+                   height to the ref'd element instead makes it collapse. -->
+              <div class="h-[380px] sm:h-[460px] lg:h-[560px]">
+                <div ref="mapContainer" />
+              </div>
+            </div>
           </div>
 
-          <div class="mt-6">
-            <div
-              v-if="isLoading"
-              class="h-64"
-            >
-              <VSpinner />
-            </div>
-            <div
-              v-else-if="error"
-              class="text-sm"
-            >
-              <p class="text-danger">
-                {{ $t('search.geographic.error', { message: error }) }}
+          <div
+            class="overflow-hidden rounded-2xl border border-base-border bg-base-foreground"
+          >
+            <div class="border-b border-base-border px-6 py-4">
+              <p
+                v-if="selectedRegion"
+                class="text-xs font-medium uppercase tracking-wider text-base-soft"
+              >
+                {{ selectedRegion.country }}
               </p>
-              <VButton
-                class="mt-3 py-2"
-                primary
-                @click="loadInventory"
+
+              <h2 class="text-lg font-semibold text-base-content">
+                {{ regionLabel }}
+              </h2>
+
+              <p
+                v-if="selectedRegion && !isLoading && !error && otus.length"
+                class="mt-0.5 text-sm text-base-soft"
               >
-                {{ $t('search.retry') }}
-              </VButton>
+                {{ $t('search.geographic.count', { total: otus.length }) }}
+              </p>
             </div>
 
-            <p
-              v-else-if="!selectedRegion"
-              class="text-base-soft text-sm"
-            >
-              {{ $t('search.geographic.prompt') }}
-            </p>
-
-            <p
-              v-else-if="!otus.length"
-              class="text-base-soft text-sm"
-            >
-              {{
-                $t('search.geographic.no_records', {
-                  region: selectedRegion.stateProvince || selectedRegion.country
-                })
-              }}
-            </p>
-
-            <ul v-else>
-              <li
-                v-for="otu in otus"
-                :key="otu.id"
-                class="pl-5 relative text-sm leading-relaxed"
+            <div class="px-6 py-5">
+              <div
+                v-if="isLoading"
+                class="h-64"
               >
-                <router-link
-                  :to="`/otus/${otu.id}`"
-                  class="text-base-content hover:text-accent"
+                <VSpinner />
+              </div>
+
+              <div
+                v-else-if="error"
+                class="text-sm"
+              >
+                <p class="text-danger">
+                  {{ $t('search.geographic.error', { message: error }) }}
+                </p>
+                <VButton
+                  class="mt-3 py-2"
+                  primary
+                  @click="loadInventory"
                 >
-                  <span v-html="otu.taxon_name.cached_html" />
-                  <span
-                    v-if="otu.taxon_name.cached_author_year"
-                    class="ml-1"
+                  {{ $t('search.retry') }}
+                </VButton>
+              </div>
+
+              <p
+                v-else-if="!selectedRegion"
+                class="text-base-soft text-sm"
+              >
+                {{ $t('search.geographic.prompt') }}
+              </p>
+
+              <p
+                v-else-if="!otus.length"
+                class="text-base-soft text-sm"
+              >
+                {{
+                  $t('search.geographic.no_records', {
+                    region: selectedRegion.stateProvince || selectedRegion.country
+                  })
+                }}
+              </p>
+
+              <ul
+                v-else
+                class="space-y-1"
+              >
+                <li
+                  v-for="otu in otus"
+                  :key="otu.id"
+                  class="text-sm leading-relaxed"
+                >
+                  <router-link
+                    :to="`/otus/${otu.id}`"
+                    class="text-base-content hover:text-accent"
                   >
-                    {{ otu.taxon_name.cached_author_year }}
-                  </span>
-                </router-link>
-              </li>
-            </ul>
+                    <span v-html="otu.taxon_name.cached_html" />
+                    <span
+                      v-if="otu.taxon_name.cached_author_year"
+                      class="ml-1"
+                    >
+                      {{ otu.taxon_name.cached_author_year }}
+                    </span>
+                  </router-link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -107,9 +128,12 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { makeAPIRequest } from '@/utils'
 import 'jsvectormap/dist/jsvectormap.css'
+
+const { t } = useI18n()
 
 const URUGUAY_CODE = 'uruguay'
 
@@ -144,10 +168,26 @@ let themeObserver = null
 let resizeObserver = null
 
 function currentPalette() {
-  return document.documentElement.classList.contains('dark')
+  const base = document.documentElement.classList.contains('dark')
     ? THEME_FILLS.dark
     : THEME_FILLS.light
+
+  // Read the accent straight from the theme so the selected province matches
+  // the rest of the site, in both light and dark.
+  const accent = getComputedStyle(document.documentElement)
+    .getPropertyValue('--tp-accent')
+    .trim()
+
+  return accent ? { ...base, selected: accent } : base
 }
+
+const regionLabel = computed(() => {
+  const region = selectedRegion.value
+
+  if (!region) return t('search.geographic.no_selection')
+
+  return region.stateProvince || region.country
+})
 
 function paintRegions() {
   const palette = currentPalette()

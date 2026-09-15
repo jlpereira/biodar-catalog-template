@@ -1,8 +1,8 @@
 <template>
   <div class="bg-base-background min-h-full">
-    <div class="sticky top-0 z-10 bg-base-foreground shadow">
+    <div class="sticky top-0 z-10 bg-base-foreground shadow px-4">
       <div
-        class="container mx-auto px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2"
+        class="container mx-auto py-3 flex flex-wrap items-center gap-x-6 gap-y-2"
       >
         <h1 class="text-base font-semibold text-base-content">References</h1>
         <nav

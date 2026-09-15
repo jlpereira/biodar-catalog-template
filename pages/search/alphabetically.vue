@@ -1,16 +1,26 @@
 <template>
   <div class="bg-base-background min-h-full">
-    <div
-      class="sticky top-0 z-10 bg-base-foreground border-b border-base-border"
-    >
-      <div
-        class="container mx-auto px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2"
-      >
-        <h1 class="text-base font-semibold text-base-content">
+    <div class="px-4">
+      <div class="container mx-auto pt-10 pb-6">
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">
           {{ $t('search.alphabetically.title') }}
         </h1>
+
+        <p
+          v-if="!isLoading && otus.length"
+          class="mt-2 text-sm text-base-soft"
+        >
+          {{ $t('search.alphabetically.summary', { total: otus.length }) }}
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="sticky top-0 z-10 border-y border-base-border bg-base-foreground px-4"
+    >
+      <div class="container mx-auto py-2">
         <nav
-          class="flex flex-wrap gap-1"
+          class="flex flex-wrap gap-0.5"
           :aria-label="$t('search.alphabetically.index')"
         >
           <template
@@ -20,15 +30,22 @@
             <a
               v-if="groups[letter]"
               :href="`#letter-${letter}`"
-              class="w-6 h-6 flex items-center justify-center rounded text-sm text-base-content hover:bg-primary hover:text-primary-content"
+              class="flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors"
+              :class="
+                letter === activeLetter
+                  ? 'bg-accent/20 font-semibold text-base-content'
+                  : 'text-base-content hover:bg-base-muted'
+              "
+              :aria-current="letter === activeLetter ? 'true' : undefined"
               @click.prevent="scrollToLetter(letter)"
             >
               {{ letter }}
             </a>
+
             <span
               v-else
-              class="w-6 h-6 flex items-center justify-center rounded text-sm text-base-soft opacity-40 cursor-default"
-              aria-disabled="true"
+              aria-hidden="true"
+              class="flex h-9 w-6 items-center justify-center text-sm text-base-soft/30"
             >
               {{ letter }}
             </span>
@@ -38,7 +55,7 @@
     </div>
 
     <div
-      class="container mx-auto py-8 bg-base-foreground border-base-border border border-t-0"
+      class="container mx-auto box-border py-8 bg-base-foreground border-base-border border border-t-0"
     >
       <VSpinner
         v-if="isLoading"
@@ -104,7 +121,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { makeAPIRequest } from '@/utils'
 
 const ALPHABET = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -201,10 +218,94 @@ const usedLetters = computed(() =>
 )
 
 function scrollToLetter(letter) {
+  activeLetter.value = letter
+  pinnedLetter = letter
+
   document
     .getElementById(`letter-${letter}`)
     ?.scrollIntoView({ behavior: 'smooth' })
 }
 
-onMounted(loadNames)
+const SECTION_OFFSET = 80
+const SECTION_SLACK = 8
+
+const activeLetter = ref(null)
+
+let sections = []
+let ticking = false
+let pinnedLetter = null
+
+function releasePin() {
+  if (!pinnedLetter) return
+
+  pinnedLetter = null
+  updateActiveLetter()
+}
+
+function refreshSections() {
+  sections = usedLetters.value
+    .map((letter) => document.getElementById(`letter-${letter}`))
+    .filter(Boolean)
+
+  updateActiveLetter()
+}
+
+function updateActiveLetter() {
+  if (pinnedLetter || !sections.length) return
+
+  const { innerHeight, scrollY } = window
+  const { scrollHeight } = document.documentElement
+  const remaining = scrollHeight - (innerHeight + scrollY)
+
+  if (remaining <= 2) {
+    activeLetter.value = sections.at(-1).id.replace('letter-', '')
+
+    return
+  }
+
+  const limit =
+    remaining < innerHeight ? innerHeight / 2 : SECTION_OFFSET + SECTION_SLACK
+
+  let current = sections[0]
+
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top > limit) break
+
+    current = section
+  }
+
+  activeLetter.value = current.id.replace('letter-', '')
+}
+
+function onScroll() {
+  if (ticking) return
+
+  ticking = true
+  requestAnimationFrame(() => {
+    updateActiveLetter()
+    ticking = false
+  })
+}
+
+watch(usedLetters, async () => {
+  await nextTick()
+  refreshSections()
+})
+
+onMounted(() => {
+  loadNames()
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('resize', onScroll, { passive: true })
+  window.addEventListener('wheel', releasePin, { passive: true })
+  window.addEventListener('touchstart', releasePin, { passive: true })
+  window.addEventListener('keydown', releasePin)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('resize', onScroll)
+  window.removeEventListener('wheel', releasePin)
+  window.removeEventListener('touchstart', releasePin)
+  window.removeEventListener('keydown', releasePin)
+})
 </script>
