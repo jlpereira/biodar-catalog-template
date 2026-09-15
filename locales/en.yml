@@ -87,12 +87,14 @@ search:
 
   alphabetically:
     title: Scientific names
+    summary: '{total} valid species'
     index: Alphabetical index
     empty: There are no names to show.
     error: 'Could not load the names: {message}'
 
   geographic:
     title: Geographic distribution
+    count: '{total} species recorded'
     subtitle: Pick a province on the map to see its inventory.
     no_selection: No selection
     prompt: Click a province on the map.
@@ -103,3 +105,10 @@ panel:
   map:
     legend:
       no_keyword: Uncategorized
+
+references:
+  title: References
+  index: Alphabetical index
+  summary: '{total} sources in the project'
+  empty: There are no references to show.
+  error: 'Could not load the references: {message}'

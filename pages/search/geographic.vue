@@ -14,111 +14,114 @@
 
     <div class="px-4 pb-14">
       <div class="container mx-auto">
-        <div
-          class="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-10"
-        >
-          <!-- The map is the control for this page, so on wide screens it
-               stays put while the inventory beside it scrolls. -->
-          <div class="min-w-0 lg:sticky lg:top-4 lg:self-start">
+        <!-- One panel, split down the middle: the map and the inventory it
+             produces are one tool, not two widgets. No overflow-hidden on the
+             wrapper — it would turn into a scroll container and kill the
+             sticky map; the SVG is clipped inside the sticky element instead. -->
+        <div class="rounded-2xl border border-base-border bg-base-foreground">
+          <div class="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div
-              class="overflow-hidden rounded-2xl border border-base-border bg-base-foreground p-3"
+              class="min-w-0 border-b border-base-border lg:border-b-0 lg:border-r"
             >
-              <!-- jsvectormap sizes itself from this wrapper; giving the
-                   height to the ref'd element instead makes it collapse. -->
-              <div class="h-[380px] sm:h-[460px] lg:h-[560px]">
-                <div ref="mapContainer" />
+              <div class="p-3 lg:sticky lg:top-4">
+                <!-- jsvectormap sizes itself from this wrapper; giving the
+                     height to the ref'd element instead makes it collapse. -->
+                <div
+                  class="h-[380px] overflow-hidden sm:h-[460px] lg:h-[560px]"
+                >
+                  <div ref="mapContainer" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div
-            class="overflow-hidden rounded-2xl border border-base-border bg-base-foreground"
-          >
-            <div class="border-b border-base-border px-6 py-4">
-              <p
-                v-if="selectedRegion"
-                class="text-xs font-medium uppercase tracking-wider text-base-soft"
-              >
-                {{ selectedRegion.country }}
-              </p>
-
-              <h2 class="text-lg font-semibold text-base-content">
-                {{ regionLabel }}
-              </h2>
-
-              <p
-                v-if="selectedRegion && !isLoading && !error && otus.length"
-                class="mt-0.5 text-sm text-base-soft"
-              >
-                {{ $t('search.geographic.count', { total: otus.length }) }}
-              </p>
-            </div>
-
-            <div class="px-6 py-5">
-              <div
-                v-if="isLoading"
-                class="h-64"
-              >
-                <VSpinner />
-              </div>
-
-              <div
-                v-else-if="error"
-                class="text-sm"
-              >
-                <p class="text-danger">
-                  {{ $t('search.geographic.error', { message: error }) }}
+            <div class="min-w-0">
+              <div class="border-b border-base-border px-6 py-4">
+                <p
+                  v-if="selectedRegion"
+                  class="text-xs font-medium uppercase tracking-wider text-base-soft"
+                >
+                  {{ selectedRegion.country }}
                 </p>
-                <VButton
-                  class="mt-3 py-2"
-                  primary
-                  @click="loadInventory"
+
+                <h2 class="text-lg font-semibold text-base-content">
+                  {{ regionLabel }}
+                </h2>
+
+                <p
+                  v-if="selectedRegion && !isLoading && !error && otus.length"
+                  class="mt-0.5 text-sm text-base-soft"
                 >
-                  {{ $t('search.retry') }}
-                </VButton>
+                  {{ $t('search.geographic.count', { total: otus.length }) }}
+                </p>
               </div>
 
-              <p
-                v-else-if="!selectedRegion"
-                class="text-base-soft text-sm"
-              >
-                {{ $t('search.geographic.prompt') }}
-              </p>
-
-              <p
-                v-else-if="!otus.length"
-                class="text-base-soft text-sm"
-              >
-                {{
-                  $t('search.geographic.no_records', {
-                    region: selectedRegion.stateProvince || selectedRegion.country
-                  })
-                }}
-              </p>
-
-              <ul
-                v-else
-                class="space-y-1"
-              >
-                <li
-                  v-for="otu in otus"
-                  :key="otu.id"
-                  class="text-sm leading-relaxed"
+              <div class="px-6 py-5">
+                <div
+                  v-if="isLoading"
+                  class="h-64"
                 >
-                  <router-link
-                    :to="`/otus/${otu.id}`"
-                    class="text-base-content hover:text-accent"
+                  <VSpinner />
+                </div>
+
+                <div
+                  v-else-if="error"
+                  class="text-sm"
+                >
+                  <p class="text-danger">
+                    {{ $t('search.geographic.error', { message: error }) }}
+                  </p>
+                  <VButton
+                    class="mt-3 py-2"
+                    primary
+                    @click="loadInventory"
                   >
-                    <span v-html="otu.taxon_name.cached_html" />
-                    <span
-                      v-if="otu.taxon_name.cached_author_year"
-                      class="ml-1"
+                    {{ $t('search.retry') }}
+                  </VButton>
+                </div>
+
+                <p
+                  v-else-if="!selectedRegion"
+                  class="text-base-soft text-sm"
+                >
+                  {{ $t('search.geographic.prompt') }}
+                </p>
+
+                <p
+                  v-else-if="!otus.length"
+                  class="text-base-soft text-sm"
+                >
+                  {{
+                    $t('search.geographic.no_records', {
+                      region:
+                        selectedRegion.stateProvince || selectedRegion.country
+                    })
+                  }}
+                </p>
+
+                <ul
+                  v-else
+                  class="space-y-1"
+                >
+                  <li
+                    v-for="otu in otus"
+                    :key="otu.id"
+                    class="text-sm leading-relaxed"
+                  >
+                    <router-link
+                      :to="`/otus/${otu.id}`"
+                      class="text-base-content hover:text-accent"
                     >
-                      {{ otu.taxon_name.cached_author_year }}
-                    </span>
-                  </router-link>
-                </li>
-              </ul>
+                      <span v-html="otu.taxon_name.cached_html" />
+                      <span
+                        v-if="otu.taxon_name.cached_author_year"
+                        class="ml-1"
+                      >
+                        {{ otu.taxon_name.cached_author_year }}
+                      </span>
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

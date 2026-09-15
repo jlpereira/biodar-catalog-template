@@ -15,44 +15,13 @@
       </div>
     </div>
 
-    <div
-      class="sticky top-0 z-10 border-y border-base-border bg-base-foreground px-4"
-    >
-      <div class="container mx-auto py-2">
-        <nav
-          class="flex flex-wrap gap-0.5"
-          :aria-label="$t('search.alphabetically.index')"
-        >
-          <template
-            v-for="letter in navLetters"
-            :key="letter"
-          >
-            <a
-              v-if="groups[letter]"
-              :href="`#letter-${letter}`"
-              class="flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors"
-              :class="
-                letter === activeLetter
-                  ? 'bg-accent/20 font-semibold text-base-content'
-                  : 'text-base-content hover:bg-base-muted'
-              "
-              :aria-current="letter === activeLetter ? 'true' : undefined"
-              @click.prevent="scrollToLetter(letter)"
-            >
-              {{ letter }}
-            </a>
-
-            <span
-              v-else
-              aria-hidden="true"
-              class="flex h-9 w-6 items-center justify-center text-sm text-base-soft/30"
-            >
-              {{ letter }}
-            </span>
-          </template>
-        </nav>
-      </div>
-    </div>
+    <LetterIndex
+      :letters="navLetters"
+      :available="usedLetters"
+      :active="activeLetter"
+      :label="$t('search.alphabetically.index')"
+      @select="scrollToLetter"
+    />
 
     <div
       class="container mx-auto box-border py-8 bg-base-foreground border-base-border border border-t-0"
@@ -121,8 +90,10 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { makeAPIRequest } from '@/utils'
+import LetterIndex from '../components/LetterIndex.vue'
+import { useLetterIndex } from '../composables/useLetterIndex.js'
 
 const ALPHABET = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
 
@@ -217,95 +188,7 @@ const usedLetters = computed(() =>
   navLetters.value.filter((letter) => groups.value[letter])
 )
 
-function scrollToLetter(letter) {
-  activeLetter.value = letter
-  pinnedLetter = letter
+const { activeLetter, scrollToLetter } = useLetterIndex(usedLetters)
 
-  document
-    .getElementById(`letter-${letter}`)
-    ?.scrollIntoView({ behavior: 'smooth' })
-}
-
-const SECTION_OFFSET = 80
-const SECTION_SLACK = 8
-
-const activeLetter = ref(null)
-
-let sections = []
-let ticking = false
-let pinnedLetter = null
-
-function releasePin() {
-  if (!pinnedLetter) return
-
-  pinnedLetter = null
-  updateActiveLetter()
-}
-
-function refreshSections() {
-  sections = usedLetters.value
-    .map((letter) => document.getElementById(`letter-${letter}`))
-    .filter(Boolean)
-
-  updateActiveLetter()
-}
-
-function updateActiveLetter() {
-  if (pinnedLetter || !sections.length) return
-
-  const { innerHeight, scrollY } = window
-  const { scrollHeight } = document.documentElement
-  const remaining = scrollHeight - (innerHeight + scrollY)
-
-  if (remaining <= 2) {
-    activeLetter.value = sections.at(-1).id.replace('letter-', '')
-
-    return
-  }
-
-  const limit =
-    remaining < innerHeight ? innerHeight / 2 : SECTION_OFFSET + SECTION_SLACK
-
-  let current = sections[0]
-
-  for (const section of sections) {
-    if (section.getBoundingClientRect().top > limit) break
-
-    current = section
-  }
-
-  activeLetter.value = current.id.replace('letter-', '')
-}
-
-function onScroll() {
-  if (ticking) return
-
-  ticking = true
-  requestAnimationFrame(() => {
-    updateActiveLetter()
-    ticking = false
-  })
-}
-
-watch(usedLetters, async () => {
-  await nextTick()
-  refreshSections()
-})
-
-onMounted(() => {
-  loadNames()
-  window.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener('resize', onScroll, { passive: true })
-  window.addEventListener('wheel', releasePin, { passive: true })
-  window.addEventListener('touchstart', releasePin, { passive: true })
-  window.addEventListener('keydown', releasePin)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('resize', onScroll)
-  window.removeEventListener('wheel', releasePin)
-  window.removeEventListener('touchstart', releasePin)
-  window.removeEventListener('keydown', releasePin)
-})
+onMounted(loadNames)
 </script>

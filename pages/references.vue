@@ -1,39 +1,31 @@
 <template>
   <div class="bg-base-background min-h-full">
-    <div class="sticky top-0 z-10 bg-base-foreground shadow px-4">
-      <div
-        class="container mx-auto py-3 flex flex-wrap items-center gap-x-6 gap-y-2"
-      >
-        <h1 class="text-base font-semibold text-base-content">References</h1>
-        <nav
-          class="flex flex-wrap gap-1"
-          aria-label="Alphabetical Index"
+    <div class="px-4">
+      <div class="container mx-auto pt-10 pb-6">
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">
+          {{ $t('references.title') }}
+        </h1>
+
+        <p
+          v-if="!isLoading && references.length"
+          class="mt-2 text-sm text-base-soft"
         >
-          <template
-            v-for="letter in navLetters"
-            :key="letter"
-          >
-            <a
-              v-if="groups[letter]"
-              :href="`#letter-${letter}`"
-              class="w-7 h-7 flex items-center justify-center rounded text-sm font-semibold text-base-content hover:bg-primary hover:text-primary-content"
-              @click.prevent="scrollToLetter(letter)"
-            >
-              {{ letter }}
-            </a>
-            <span
-              v-else
-              class="w-7 h-7 flex items-center justify-center rounded text-sm font-semibold text-base-soft opacity-40 cursor-default"
-              aria-disabled="true"
-            >
-              {{ letter }}
-            </span>
-          </template>
-        </nav>
+          {{ $t('references.summary', { total: references.length }) }}
+        </p>
       </div>
     </div>
 
-    <div class="container mx-auto py-8 bg-base-foreground shadow">
+    <LetterIndex
+      :letters="navLetters"
+      :available="usedLetters"
+      :active="activeLetter"
+      :label="$t('references.index')"
+      @select="scrollToLetter"
+    />
+
+    <div
+      class="container mx-auto box-border py-8 bg-base-foreground border-base-border border border-t-0"
+    >
       <VSpinner
         v-if="isLoading"
         full-screen
@@ -44,14 +36,14 @@
         class="px-12 text-sm"
       >
         <p class="text-danger">
-          No se pudieron cargar las referencias: {{ error }}
+          {{ $t('references.error', { message: error }) }}
         </p>
         <VButton
           class="mt-3 py-2"
           primary
           @click="loadReferences"
         >
-          Reintentar
+          {{ $t('search.retry') }}
         </VButton>
       </div>
 
@@ -59,7 +51,7 @@
         v-else-if="!references.length"
         class="px-12 text-base-soft text-sm"
       >
-        No hay referencias para mostrar.
+        {{ $t('references.empty') }}
       </p>
 
       <section
@@ -101,6 +93,8 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { makeAPIRequest } from '@/utils'
+import LetterIndex from './components/LetterIndex.vue'
+import { useLetterIndex } from './composables/useLetterIndex.js'
 
 const ALPHABET = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
 
@@ -187,8 +181,6 @@ const groups = computed(() => {
   }, {})
 })
 
-onMounted(loadReferences)
-
 const navLetters = computed(() =>
   groups.value['#'] ? [...ALPHABET, '#'] : ALPHABET
 )
@@ -197,9 +189,7 @@ const usedLetters = computed(() =>
   navLetters.value.filter((letter) => groups.value[letter])
 )
 
-function scrollToLetter(letter) {
-  document
-    .getElementById(`letter-${letter}`)
-    ?.scrollIntoView({ behavior: 'smooth' })
-}
+const { activeLetter, scrollToLetter } = useLetterIndex(usedLetters)
+
+onMounted(loadReferences)
 </script>
