@@ -433,6 +433,7 @@ home:
     taxon_names: Nombres
     project_sources: Referencias
     images: Imágenes
+    citations: Citas
 
   sections:
     title: Explorar el catálogo
@@ -471,6 +472,39 @@ home:
       citarlo, quiénes participan y los detalles técnicos en la página de
       información.
     cta: Acerca del catálogo
+
+  gallery:
+    label: Galería de imágenes
+    previous: Imagen anterior
+    next: Imagen siguiente
+    go_to: Ir a la imagen {index}
+    credit: Fotos vía Unsplash — ilustrativas, no son registros del catálogo.
+
+    slides:
+      branch:
+        title: En la percha
+        caption: Perfil lateral, la vista desde la que se leen la mayoría de los caracteres diagnósticos.
+        alt: Saltamontes verde posado sobre una rama fina y desnuda
+      lubber:
+        title: Colores de advertencia
+        caption: Un patrón llamativo que anuncia a los depredadores que no es comestible.
+        alt: Saltamontes grande anaranjado y negro con marcas rojas
+      profile:
+        title: Plan corporal
+        caption: Los fémures posteriores agrandados, el motor del salto en el grupo.
+        alt: Saltamontes de perfil completo sobre un fondo verde amarillento
+      ground:
+        title: Sobre suelo desnudo
+        caption: Suelo abierto y pasto corto, el hábitat típico de los acridomorfos.
+        alt: Insecto verde de antenas largas parado sobre suelo desnudo
+      crimson:
+        title: Variación de color
+        caption: Dentro de una misma especie el color puede cambiar con la edad y el hábitat.
+        alt: Saltamontes rojo y anaranjado fotografiado en primer plano
+      macro:
+        title: Cabeza y antenas
+        caption: La forma de las antenas y el perfil facial separan muchos géneros.
+        alt: Macrofotografía frontal de la cabeza de un saltamontes verde
 
 search:
   retry: Reintentar

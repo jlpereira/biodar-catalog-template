@@ -10,6 +10,7 @@ home:
     taxon_names: Names
     project_sources: References
     images: Images
+    citations: Citations
 
   sections:
     title: Explore the catalog
@@ -47,6 +48,39 @@ home:
       current state of the project. How to cite it, who takes part in it and
       the technical details are all on the information page.
     cta: About the catalog
+
+  gallery:
+    label: Image gallery
+    previous: Previous image
+    next: Next image
+    go_to: Go to image {index}
+    credit: Photos via Unsplash — illustrative, not catalog records.
+
+    slides:
+      branch:
+        title: On the perch
+        caption: Lateral profile, the view most diagnostic characters are read from.
+        alt: Green grasshopper resting on a thin bare branch
+      lubber:
+        title: Warning colours
+        caption: Bold patterning advertising unpalatability to predators.
+        alt: Large orange and black grasshopper with red markings
+      profile:
+        title: Body plan
+        caption: Enlarged hind femora, the jumping engine of the group.
+        alt: Grasshopper in full lateral profile against a yellow-green background
+      ground:
+        title: On bare ground
+        caption: Open soil and short grass, typical acridomorph habitat.
+        alt: Green long-horned insect standing on bare soil
+      crimson:
+        title: Colour variation
+        caption: Within a single species, colour can shift with age and habitat.
+        alt: Red and orange grasshopper photographed in close-up
+      macro:
+        title: Head and antennae
+        caption: Antennal shape and facial profile separate many genera.
+        alt: Frontal macro photograph of a green grasshopper's head
 
 search:
   retry: Retry
