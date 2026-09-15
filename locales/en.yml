@@ -1,0 +1,71 @@
+home:
+  tagline: '({order}) Species of Argentina and Uruguay.'
+
+  search:
+    placeholder: Search for a taxon by name...
+    hint: Type at least three letters to see suggestions.
+
+  stats:
+    otus: OTUs
+    taxon_names: Names
+    project_sources: References
+    images: Images
+
+  sections:
+    title: Explore the catalog
+
+    alphabetically:
+      title: Scientific names
+      description: >-
+        The full list of valid species, sorted alphabetically and with an index
+        by letter.
+      cta: View names
+
+    geographic:
+      title: Geographic distribution
+      description: >-
+        Pick a province on the map and get the inventory of taxa recorded
+        there.
+      cta: Open the map
+
+    references:
+      title: References
+      description: >-
+        The project bibliography, grouped by author and with scientific names
+        in italics.
+      cta: View bibliography
+
+  announcements:
+    title: News
+    grown: We’ve grown!
+    live: Our website is live!
+
+  about:
+    title: About this catalog
+    body: >-
+      Data is served live from TaxonWorks, so what you see here reflects the
+      current state of the project. How to cite it, who takes part in it and
+      the technical details are all on the information page.
+    cta: About the catalog
+
+search:
+  retry: Retry
+
+  alphabetically:
+    title: Scientific names
+    index: Alphabetical index
+    empty: There are no names to show.
+    error: 'Could not load the names: {message}'
+
+  geographic:
+    title: Geographic distribution
+    subtitle: Pick a province on the map to see its inventory.
+    no_selection: No selection
+    prompt: Click a province on the map.
+    no_records: 'No records for {region}.'
+    error: 'Could not load the inventory: {message}'
+
+panel:
+  map:
+    legend:
+      no_keyword: Uncategorized

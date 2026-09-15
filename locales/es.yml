@@ -1,0 +1,490 @@
+common:
+  no_records: No se encontraron registros.
+  json_data: Datos JSON
+  total: Total
+  source: Fuente
+  close: Cerrar
+  expand: Expandir
+  opens_new_window: (se abre en una ventana nueva)
+
+component:
+  spinner:
+    loading: Cargando...
+    legend: Cargando, por favor espere.
+
+  pagination:
+    label: Paginación
+    first: Ir a la primera página
+    previous: Ir a la página anterior
+    next: Ir a la página siguiente
+    last: Ir a la última página
+
+  autocomplete:
+    placeholder: Buscar...
+
+  clipboard:
+    copy: Copiar al portapapeles
+    copied: Copiado al portapapeles
+
+  image_viewer:
+    label: Visor de imágenes
+    previous: Imagen anterior
+    next: Imagen siguiente
+    close: Cerrar el visor de imágenes
+
+  gallery:
+    image_error: No se encontró la imagen o el formato no es compatible
+    depiction_alt: Imagen de la representación
+    depicted_in: 'Representado en:'
+
+  dropdown:
+    menu: Menú
+    options: Abrir opciones del panel
+
+  modal:
+    label: Diálogo
+    close: Cerrar el diálogo
+
+  navbar:
+    menu: Menú
+    open_menu: Abrir el menú de navegación
+    open_main_menu: Abrir el menú principal
+    section_navigation: Navegación de la sección
+
+  footer_copyright:
+    logo_alt: Logotipo del titular de los derechos
+
+  theme:
+    to_dark: Cambiar al modo oscuro
+    to_light: Cambiar al modo claro
+
+  locale:
+    switch: Cambiar de idioma
+
+  address:
+    send_email: Enviar correo electrónico
+
+  tracker:
+    title: Informar de un problema
+    issue_with: 'Mi problema es con:'
+
+  pagination_info:
+    records: '{from} - {to} de {total} registros.'
+    no_records: 0 registros.
+
+  footer:
+    retrieved_on: Consultado el {date}
+    at: en
+    analytics: Este sitio utiliza {service}.
+    data_provided_by: Datos proporcionados por
+    pages_by: Páginas por
+    support_by: Soporte (Servicios) por
+
+otus:
+  search_placeholder: Buscar nombre...
+  invalid: No válido
+  breadcrumb: Ruta de navegación
+  external_resources: Recursos externos
+  dwc_download: Descargar ocurrencias DwC
+  show_all: '... Mostrar todo ... ({count})'
+  show_less: Mostrar menos
+  show_all_menu: Mostrar todo
+  combination: Combinación
+
+  datamap:
+    button_title: Enlaces para obtener en formato JSON la información presente en esta página.
+    title: Mapa de datos
+    description: Los siguientes enlaces proporcionan en formato JSON la información presente en esta página.
+    request_key: Clave de la petición
+    url: URL
+
+panel:
+  stats:
+    title: Estadísticas
+    caption: Resumen de nombres taxonómicos por rango, con los nombres válidos vivientes, los nombres fósiles, los nombres no válidos y los totales.
+    taxon: Taxón
+    taxa: Taxones
+    rank: Rango
+    valid_names: Nombres válidos
+    extant: Viviente
+    fossil: Fósil
+    invalid: No válido
+    otus_linked: OTU vinculadas a protónimos válidos
+    taxon_names: Nombres taxonómicos
+    show_taxa: Mostrar taxones
+    hide_taxa: Ocultar taxones
+
+  type:
+    title: Tipo
+
+  type_specimen:
+    title: Ejemplar tipo
+
+  descendants:
+    title: Descendientes y sinónimos
+
+  references_cited:
+    title: Referencias citadas
+
+  nomenclature:
+    title: Nomenclatura
+
+  nomenclature_references:
+    title: Referencias nomenclaturales
+
+  keys:
+    title: Claves
+
+  map:
+    absences: Ausencias
+    loading: Cargando...
+    search_otu: OTU
+    search_button: Buscar
+
+    legend:
+      aggregate: Agregado (distribución aseverada y georreferencia)
+      asserted_absent: Ausente
+      asserted_distribution: Distribución aseverada
+      georeference: Georreferencia
+      collection_object: Objeto de colección
+      field_occurrence: Ocurrencia de campo
+      type_material: Tipo primario
+      no_keyword: Sin categoría
+    cached_map:
+      title: Mapa en caché
+      data: Datos
+      is_synced: Está sincronizado
+      last_update: Última actualización
+      synced: El mapa está sincronizado con los últimos cambios
+      not_synced: El mapa no está sincronizado con los últimos cambios
+      note: >-
+        * Los mapas agregados se generan a partir de datos de georreferencias y
+        de distribuciones aseveradas. El cálculo de los mapas lleva tiempo, por
+        lo que se recalculan periódicamente en lugar de hacerlo cada vez que se
+        crean, eliminan o actualizan georreferencias y distribuciones
+        aseveradas concretas. Cuando aparece un aviso de advertencia, el mapa
+        no está sincronizado con los últimos cambios de los datos subyacentes.
+
+  sounds:
+    title: Sonidos
+    observations: Observaciones
+    view_observations: Ver las observaciones
+    descriptor: Descriptor
+    no_records: No se encontraron registros
+    audio_recording: 'Grabación de audio: {title}'
+    download: Descargar
+    seek: Buscar en la pista
+    volume: Volumen
+    play: Reproducir
+    pause: Pausar
+    mute: Silenciar
+    unmute: Activar el sonido
+
+  biological_associations:
+    title: Asociaciones biológicas
+    subject: Sujeto
+    object: Objeto
+    citations: Citas
+    reference: Referencia
+    pages: Páginas
+    biological: Biológica
+    asserted: Aseverada
+    annotations: Anotaciones
+    relationship: Relación
+    properties: Propiedades
+    distribution: Distribución
+    images: Imágenes
+    label: Etiqueta
+    order: Orden
+    family: Familia
+    genus: Género
+
+nomenclature:
+  rank:
+    nomenclatural_rank: Rango nomenclatural
+    kingdom: Reino
+    subkingdom: Subreino
+    phylum: Filo
+    subphylum: Subfilo
+    superclass: Superclase
+    class: Clase
+    subclass: Subclase
+    infraclass: Infraclase
+    cohort: Cohorte
+    subcohort: Subcohorte
+    superorder: Superorden
+    order: Orden
+    suborder: Suborden
+    infraorder: Infraorden
+    parvorder: Parvorden
+    nanorder: Nanorden
+    superfamily: Superfamilia
+    epifamily: Epifamilia
+    family: Familia
+    supersubfamily: Supersubfamilia
+    subfamily: Subfamilia
+    supertribe: Supertribu
+    tribe: Tribu
+    subtribe: Subtribu
+    infratribe: Infratribu
+    supergenus: Supergénero
+    genus: Género
+    subgenus: Subgénero
+    supersuperspecies: Supersuperespecie
+    superspecies: Superespecie
+    subsuperspecies: Subsuperespecie
+    species: Especie
+    subspecies: Subespecie
+    variety: Variedad
+    form: Forma
+
+  type_status:
+    neotype: Neotipo
+    holotype: Holotipo
+    neolectotype: Neolectotipo
+    lectotype: Lectotipo
+    syntype: Sintipo
+    paralectotype: Paralectotipo
+    paralectotypes: Paralectotipos
+    paratype: Paratipo
+    paratypes: Paratipos
+
+dwc:
+  categories:
+    taxon: Taxón
+    location: Localidad
+    event: Evento
+    occurrence: Ocurrencia
+    identification: Identificación
+    record_level: Nivel de registro
+    other: Otros
+
+  labels:
+    kingdom: Reino
+    phylum: Filo
+    class: Clase
+    order: Orden
+    superfamily: Superfamilia
+    family: Familia
+    subfamily: Subfamilia
+    tribe: Tribu
+    genus: Género
+    subgenus: Subgénero
+    species: Especie
+    scientificName: Nombre científico
+    scientificNameAuthorship: Autoría
+    taxonRank: Rango
+    taxonID: ID del taxón
+    taxonomicStatus: Estatus taxonómico
+    nomenclaturalCode: Código nomenclatural
+    specificEpithet: Epíteto específico
+    infraspecificEpithet: Epíteto infraespecífico
+    higherClassification: Clasificación superior
+    vernacularName: Nombre común
+    nameAccordingTo: Nombre según
+    namePublishedIn: Nombre publicado en
+    acceptedNameUsage: Nombre aceptado
+    parentNameUsage: Nombre parental
+    originalNameUsage: Nombre original
+    taxonRemarks: Observaciones sobre el taxón
+    decimalLatitude: Latitud
+    decimalLongitude: Longitud
+    coordinateUncertaintyInMeters: Incertidumbre de las coordenadas (m)
+    geodeticDatum: Datum geodésico
+    country: País
+    countryCode: Código de país
+    stateProvince: Estado/Provincia
+    county: Departamento
+    municipality: Municipio
+    locality: Localidad
+    verbatimLocality: Localidad textual
+    minimumElevationInMeters: Elevación mín. (m)
+    maximumElevationInMeters: Elevación máx. (m)
+    verbatimElevation: Elevación textual
+    continent: Continente
+    waterBody: Masa de agua
+    island: Isla
+    islandGroup: Grupo de islas
+    minimumDepthInMeters: Profundidad mín. (m)
+    maximumDepthInMeters: Profundidad máx. (m)
+    verbatimDepth: Profundidad textual
+    locationRemarks: Observaciones sobre la localidad
+    georeferencedBy: Georreferenciado por
+    georeferencedDate: Fecha de georreferenciación
+    georeferenceProtocol: Protocolo de georreferenciación
+    georeferenceSources: Fuentes de la georreferenciación
+    georeferenceRemarks: Observaciones sobre la georreferenciación
+    eventDate: Fecha
+    eventTime: Hora
+    year: Año
+    month: Mes
+    day: Día
+    verbatimEventDate: Fecha textual
+    habitat: Hábitat
+    samplingProtocol: Protocolo de muestreo
+    samplingEffort: Esfuerzo de muestreo
+    fieldNotes: Notas de campo
+    eventRemarks: Observaciones sobre el evento
+    fieldNumber: Número de campo
+    occurrenceID: ID de la ocurrencia
+    catalogNumber: Número de catálogo
+    recordNumber: Número de registro
+    recordedBy: Registrado por
+    individualCount: Número de individuos
+    sex: Sexo
+    lifeStage: Estadio de vida
+    reproductiveCondition: Condición reproductiva
+    behavior: Comportamiento
+    occurrenceRemarks: Observaciones sobre la ocurrencia
+    occurrenceStatus: Estatus de la ocurrencia
+    preparations: Preparaciones
+    disposition: Disposición
+    associatedMedia: Medios asociados
+    associatedReferences: Referencias asociadas
+    associatedTaxa: Taxones asociados
+    otherCatalogNumbers: Otros números de catálogo
+    typeStatus: Estatus del tipo
+    identifiedBy: Identificado por
+    dateIdentified: Fecha de identificación
+    identificationRemarks: Observaciones sobre la identificación
+    identificationQualifier: Calificador de la identificación
+    institutionID: ID de la institución
+    modified: Última modificación
+    language: Idioma
+    license: Licencia
+    rightsHolder: Titular de los derechos
+    bibliographicCitation: Cita
+    references: Referencias
+    institutionCode: Código de la institución
+    collectionCode: Código de la colección
+    datasetName: Conjunto de datos
+    basisOfRecord: Base del registro
+    informationWithheld: Información retenida
+
+bibliography:
+  title: Bibliografía
+  in_citation: En la cita
+  in_citation_placeholder: 'Buscar en cualquier parte de la cita... por ejemplo: "Charles Darwin Archives"'
+  authors: Autor(es)
+  authors_placeholder: Escriba...
+  published_between: 'Publicado entre:'
+  search: Buscar
+  reset: Restablecer
+  sources: Fuentes
+  show_otus: Mostrar OTU
+  otu: OTU
+
+http_errors:
+  not_found:
+    title: Página no encontrada.
+    body: Vaya, no encontramos la página que busca. Intente volver a la página anterior.
+  server_error:
+    title: Error interno del servidor.
+    body: Vaya, parece que algo salió mal.<br />Registramos estos errores automáticamente, pero si el problema persiste no dude en contactarnos.
+
+news:
+  title: Novedades
+  no_news: No se encontraron novedades.
+  read_more: Leer más →
+  back_to_news: Volver a las novedades
+  close_announcement: Cerrar
+
+keys:
+  metadata: Metadatos
+  data: Datos
+  back: Atrás
+  next: Siguiente
+
+dwc_filter:
+  title: Buscar en el Darwin Core
+  scientific_name: Nombre científico
+  scientific_name_placeholder: Escriba un nombre...
+  author: Autor
+  author_placeholder: Escriba un autor...
+  search: Buscar
+  reset: Restablecer
+  more_filters: Más filtros
+  specimen_records: Registros de ejemplares
+  otu: OTU
+
+  classification: Clasificación
+  classification_placeholder: Escriba un nombre...
+
+  type: Tipo
+  type_none: Ninguno
+
+  distribution: Distribución
+  country_placeholder: País...
+  state_placeholder: Estado/Provincia...
+  county_placeholder: Departamento...
+
+  institution_code: Código de la institución
+  institution_code_placeholder: Escriba...
+
+home:
+  tagline: '({order}) Especies de Argentina y Uruguay.'
+
+  search:
+    placeholder: Buscar un taxón por nombre...
+    hint: Escribí al menos tres letras para ver sugerencias.
+
+  stats:
+    otus: OTUs
+    taxon_names: Nombres
+    project_sources: Referencias
+    images: Imágenes
+
+  sections:
+    title: Explorar el catálogo
+
+    alphabetically:
+      title: Nombres científicos
+      description: >-
+        El listado completo de especies válidas, ordenado alfabéticamente y con
+        índice por letra.
+      cta: Ver nombres
+
+    geographic:
+      title: Distribución geográfica
+      description: >-
+        Elegí una provincia en el mapa y obtené el inventario de taxones
+        registrados allí.
+      cta: Abrir el mapa
+
+    references:
+      title: Referencias
+      description: >-
+        La bibliografía del proyecto, agrupada por autor y con los nombres
+        científicos en cursiva.
+      cta: Ver bibliografía
+
+  announcements:
+    title: Novedades
+    grown: ¡Crecimos!
+    live: ¡Nuestro sitio ya está en línea!
+
+  about:
+    title: Sobre este catálogo
+    body: >-
+      Los datos se sirven en vivo desde TaxonWorks, así que la información que
+      ves acá refleja el estado actual del proyecto. Podés consultar cómo
+      citarlo, quiénes participan y los detalles técnicos en la página de
+      información.
+    cta: Acerca del catálogo
+
+search:
+  retry: Reintentar
+
+  alphabetically:
+    title: Nombres científicos
+    index: Índice alfabético
+    empty: No hay nombres para mostrar.
+    error: 'No se pudieron cargar los nombres: {message}'
+
+  geographic:
+    title: Distribución geográfica
+    subtitle: Seleccioná una provincia en el mapa para ver su inventario.
+    no_selection: Sin selección
+    prompt: Hacé clic en una provincia del mapa.
+    no_records: 'No hay registros para {region}.'
+    error: 'No se pudo cargar el inventario: {message}'
