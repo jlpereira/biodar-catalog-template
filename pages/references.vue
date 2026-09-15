@@ -79,7 +79,7 @@
             class="pl-5 relative text-base-content leading-relaxed text-sm"
           >
             <span
-              class="absolute left-0 top-[0.55em] w-2 h-2 bg-primary rounded-full"
+              class="absolute left-0 top-[0.55em] w-2 h-2 bg-accent rounded-full"
             />
             <template v-if="source.author">
               <span class="font-medium mr-1 uppercase">

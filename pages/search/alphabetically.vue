@@ -1,6 +1,8 @@
 <template>
   <div class="bg-base-background min-h-full">
-    <div class="sticky top-0 z-10 bg-base-foreground shadow">
+    <div
+      class="sticky top-0 z-10 bg-base-foreground border-b border-base-border"
+    >
       <div
         class="container mx-auto px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2"
       >
@@ -35,7 +37,9 @@
       </div>
     </div>
 
-    <div class="container mx-auto py-8 bg-base-foreground shadow">
+    <div
+      class="container mx-auto py-8 bg-base-foreground border-base-border border border-t-0"
+    >
       <VSpinner
         v-if="isLoading"
         full-screen
@@ -82,7 +86,7 @@
           >
             <router-link
               :to="`/otus/${otu.id}`"
-              class="text-base-content hover:text-primary"
+              class="text-base-content hover:text-accent"
             >
               <span v-html="otu.taxon_name.cached_html" />
               <span

@@ -87,7 +87,7 @@
               >
                 <router-link
                   :to="`/otus/${otu.id}`"
-                  class="text-base-content hover:text-primary"
+                  class="text-base-content hover:text-accent"
                 >
                   <span v-html="otu.taxon_name.cached_html" />
                   <span

@@ -1,5 +1,9 @@
 @import '@/assets/css/tailwind.css';
 
+@theme {
+  --color-accent: var(--tp-accent);
+}
+
 /*
  * User Tailwind CSS overrides
  *

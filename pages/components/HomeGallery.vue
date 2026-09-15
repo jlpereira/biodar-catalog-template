@@ -59,7 +59,7 @@
         class="absolute inset-x-0 top-0 h-1 bg-white/20"
       >
         <div
-          class="h-full bg-primary transition-[width] ease-linear motion-reduce:transition-none"
+          class="h-full bg-accent transition-[width] ease-linear motion-reduce:transition-none"
           :style="{
             width: `${progress}%`,
             transitionDuration: progress === 0 ? '0ms' : `${TICK_MS}ms`
@@ -105,7 +105,7 @@
           class="h-2 rounded-full transition-all"
           :class="
             index === current
-              ? 'w-6 bg-primary'
+              ? 'w-6 bg-accent'
               : 'w-2 bg-base-border hover:bg-base-soft'
           "
           :aria-label="$t('home.gallery.go_to', { index: index + 1 })"

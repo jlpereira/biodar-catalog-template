@@ -15,7 +15,7 @@
             class="inline-flex items-center gap-2 rounded-full border border-base-border bg-base-foreground px-3 py-1 text-xs font-medium uppercase tracking-wider text-base-soft"
           >
             <span
-              class="h-1.5 w-1.5 rounded-full bg-primary"
+              class="h-1.5 w-1.5 rounded-full bg-accent"
               aria-hidden="true"
             />
             {{ projectOrder }}

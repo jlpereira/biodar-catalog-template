@@ -13,11 +13,11 @@
           v-for="(section, index) in SECTIONS"
           :key="section.to"
           :to="section.to"
-          class="group/card relative flex flex-col overflow-hidden rounded-2xl border border-base-border bg-base-background p-6 transition-colors hover:border-primary/50"
+          class="group/card relative flex flex-col overflow-hidden rounded-2xl border border-base-border bg-base-background p-6 transition-colors hover:border-accent/50"
         >
           <span
             aria-hidden="true"
-            class="absolute inset-y-0 left-0 w-1 bg-primary opacity-0 transition-opacity group-hover/card:opacity-100"
+            class="absolute inset-y-0 left-0 w-1 bg-accent opacity-0 transition-opacity group-hover/card:opacity-100"
           />
 
           <h3 class="font-semibold text-base-content">
