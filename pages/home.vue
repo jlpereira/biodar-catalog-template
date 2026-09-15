@@ -1,11 +1,14 @@
 <template>
   <div class="bg-base-background flex min-h-full flex-col">
     <!-- Editorial split: copy + search on the left, autoplaying gallery on the right -->
-    <section
-      class="shrink-0 px-6 pt-12 pb-16 sm:pt-16 lg:pt-20"
-    >
+    <section class="relative shrink-0 px-6 pt-12 pb-16 sm:pt-16 lg:pt-20">
       <div
-        class="container mx-auto grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16"
+        aria-hidden="true"
+        class="hero-backdrop pointer-events-none absolute inset-0"
+      />
+
+      <div
+        class="relative container mx-auto grid items-center gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-16"
       >
         <div>
           <span
@@ -25,12 +28,12 @@
           </h1>
 
           <p
-            class="mt-4 max-w-xl text-lg leading-relaxed text-pretty text-base-soft"
+            class="mt-4 max-w-2xl text-lg leading-relaxed text-pretty text-base-soft"
           >
             {{ $t('home.tagline', { order: projectOrder }) }}
           </p>
 
-          <HomeSearch class="mt-8 max-w-xl" />
+          <HomeSearch class="mt-8 max-w-2xl" />
 
           <HomeStats class="mt-10" />
         </div>
@@ -51,3 +54,50 @@ import HomeExplore from './components/HomeExplore.vue'
 
 const { project_name: projectName, project_order: projectOrder } = __APP_ENV__
 </script>
+
+<style scoped>
+/*
+ * Two stacked background layers, both painted inside the section's own box so
+ * nothing can bleed out and reintroduce horizontal overflow:
+ *
+ *   1. a soft lift, sitting behind the gallery card, so the card rests on a
+ *      surface instead of floating in flat colour;
+ *   2. a fine dot grid that gives the whole hero field some material.
+ *
+ * Both layers read theme variables, so they follow light and dark on their own.
+ * The mask fades the grid out before the explore band so the two do not fight.
+ */
+.hero-backdrop {
+  background-image:
+    radial-gradient(
+      22rem 18rem at 50% 34%,
+      var(--tp-base-foreground),
+      transparent 70%
+    ),
+    radial-gradient(
+      color-mix(in srgb, var(--tp-base-border) 65%, transparent) 1px,
+      transparent 1px
+    );
+  background-repeat: no-repeat, repeat;
+  background-size:
+    100% 100%,
+    22px 22px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+@media (min-width: 64rem) {
+  .hero-backdrop {
+    background-image:
+      radial-gradient(
+        30rem 24rem at 74% 46%,
+        var(--tp-base-foreground),
+        transparent 70%
+      ),
+      radial-gradient(
+        color-mix(in srgb, var(--tp-base-border) 65%, transparent) 1px,
+        transparent 1px
+      );
+  }
+}
+</style>

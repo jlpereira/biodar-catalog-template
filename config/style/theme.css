@@ -60,12 +60,6 @@
   --tp-shadow-sm: rgba(0, 0, 0, 0.4);
   --tp-tree-line: rgb(82, 82, 91);
 
-  --tp-footer-background: rgb(24, 24, 27);
-  --tp-footer-content: rgb(244, 244, 245);
-  --tp-footer-link: rgb(161, 161, 170);
-  --tp-footer-link-hover: rgb(244, 244, 245);
-  --tp-footer-border: rgb(39, 39, 42);
-
   --tp-scrollbar-thumb: rgb(63, 63, 70);
   --tp-scrollbar-track: rgb(24, 24, 27);
 }

@@ -10,7 +10,7 @@
     @focusout="resume"
   >
     <div
-      class="relative aspect-4/3 overflow-hidden rounded-3xl border border-base-border bg-base-muted shadow-xl sm:aspect-16/10"
+      class="relative aspect-4/3 overflow-hidden rounded-2xl border border-base-border bg-base-muted shadow-md sm:aspect-16/9"
     >
       <div
         class="flex h-full w-full transition-transform duration-700 ease-out motion-reduce:transition-none"
@@ -28,7 +28,7 @@
           <img
             :src="`${slide.src}&w=1200`"
             :srcset="`${slide.src}&w=800 800w, ${slide.src}&w=1200 1200w, ${slide.src}&w=1800 1800w`"
-            sizes="(min-width: 1024px) 55vw, 100vw"
+            sizes="(min-width: 1024px) 45vw, 100vw"
             :alt="$t(`home.gallery.slides.${slide.key}.alt`)"
             class="h-full w-full object-cover"
             :loading="index === 0 ? 'eager' : 'lazy'"
