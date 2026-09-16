@@ -10,18 +10,48 @@
           v-if="!isLoading && references.length"
           class="mt-2 text-sm text-base-soft"
         >
-          {{ $t('references.summary', { total: references.length }) }}
+          {{
+            activeCount
+              ? $t('references.summary_filtered', {
+                  shown: filtered.length,
+                  total: references.length
+                })
+              : $t('references.summary', { total: references.length })
+          }}
         </p>
       </div>
     </div>
 
     <LetterIndex
+      ref="letterIndex"
       :letters="navLetters"
       :available="usedLetters"
       :active="activeLetter"
       :label="$t('references.index')"
       @select="scrollToLetter"
-    />
+    >
+      <template #actions>
+        <FilterToggle
+          :label="$t('references.filters.title')"
+          :expanded="showFilters"
+          :count="activeCount"
+          @toggle="showFilters = !showFilters"
+        />
+      </template>
+
+      <template #panel>
+        <ReferenceFilters
+          v-show="showFilters"
+          v-model:citation="citation"
+          v-model:author="author"
+          v-model:year-start="yearStart"
+          v-model:year-end="yearEnd"
+          :bounds="bounds"
+          :active-count="activeCount"
+          @reset="reset"
+        />
+      </template>
+    </LetterIndex>
 
     <div
       class="container mx-auto box-border py-8 bg-base-foreground border-base-border border border-t-0"
@@ -43,7 +73,7 @@
           primary
           @click="loadReferences"
         >
-          {{ $t('search.retry') }}
+          {{ $t('references.retry') }}
         </VButton>
       </div>
 
@@ -54,11 +84,29 @@
         {{ $t('references.empty') }}
       </p>
 
+      <div
+        v-else-if="!filtered.length"
+        class="px-12 text-sm"
+      >
+        <p class="text-base-soft">
+          {{ $t('references.filters.no_matches') }}
+        </p>
+
+        <VButton
+          class="mt-3"
+          outline
+          @click="reset"
+        >
+          {{ $t('references.filters.reset') }}
+        </VButton>
+      </div>
+
       <section
         v-for="letter in usedLetters"
         :key="letter"
         :id="`letter-${letter}`"
-        class="scroll-mt-20 mb-10"
+        class="mb-10"
+        :style="{ scrollMarginTop: `${indexOffset}px` }"
       >
         <div class="bg-primary text-primary-content w-min px-4 pl-8 py-0.5">
           <span class="text-sm leading-none">{{ letter }}</span>
@@ -91,10 +139,13 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, useTemplateRef } from 'vue'
 import { makeAPIRequest } from '@/utils'
-import LetterIndex from './components/LetterIndex.vue'
-import { useLetterIndex } from './composables/useLetterIndex.js'
+import LetterIndex from '../components/LetterIndex.vue'
+import FilterToggle from '../components/FilterToggle.vue'
+import ReferenceFilters from '../components/ReferenceFilters.vue'
+import { useLetterIndex } from '../composables/useLetterIndex.js'
+import { useReferenceFilters } from '../composables/useReferenceFilters.js'
 
 const ALPHABET = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
 
@@ -150,6 +201,21 @@ async function loadReferences() {
   }
 }
 
+// Closed by default: the alphabet is the primary way into this page, and the
+// filters are there for the reader who already knows what they are after.
+const showFilters = ref(false)
+
+const {
+  citation,
+  author,
+  yearStart,
+  yearEnd,
+  bounds,
+  filtered,
+  activeCount,
+  reset
+} = useReferenceFilters(references)
+
 function authorKey(source) {
   return source.cached_author_string || source.author || source.cached || ''
 }
@@ -165,7 +231,7 @@ function firstLetter(source) {
 }
 
 const groups = computed(() => {
-  const sorted = [...references.value].sort(
+  const sorted = [...filtered.value].sort(
     (a, b) =>
       authorKey(a).localeCompare(authorKey(b), 'es') ||
       String(a.year ?? '').localeCompare(String(b.year ?? ''))
@@ -189,7 +255,13 @@ const usedLetters = computed(() =>
   navLetters.value.filter((letter) => groups.value[letter])
 )
 
-const { activeLetter, scrollToLetter } = useLetterIndex(usedLetters)
+const letterIndex = useTemplateRef('letterIndex')
+
+const {
+  activeLetter,
+  offset: indexOffset,
+  scrollToLetter
+} = useLetterIndex(usedLetters, letterIndex)
 
 onMounted(loadReferences)
 </script>

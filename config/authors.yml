@@ -1,0 +1,46 @@
+# The people credited by the catalog: `catalog_authors` on the home page and
+# on /about, `catalog_developers` on /about only.
+#
+# `project_authors` in config/project.yml is the single citation string the
+# footer prints; these lists are the human-facing credit blocks. An entry
+# without a `name` is skipped, and an empty list hides its whole section.
+#
+# `affiliation` takes either a plain string or one value per locale:
+#
+#   affiliation:
+#     en: Institution, City, Country
+#     es: Institución, Ciudad, País
+#
+# `url` is optional: when set, the name links to it.
+
+catalog_authors:
+  - name: Carlos S. Carbonell †
+    affiliation:
+      en: Facultad de Ciencias, Universidad de la República, Montevideo - Uruguay
+      es: Facultad de Ciencias, Universidad de la República, Montevideo - Uruguay
+    url:
+
+  - name: María Marta Cigliano
+    affiliation:
+      en: Div. Entomología, Museo de La Plata; CEPAVE CONICET-UNLP, La Plata - Argentina
+      es: Div. Entomología, Museo de La Plata; CEPAVE CONICET-UNLP, La Plata - Argentina
+    url:
+
+  - name: Carlos E. Lange
+    affiliation:
+      en: Centro de Estudios Parasitológicos y de Vectores (CEPAVE), CIC-CONICET-UNLP, La Plata - Argentina
+      es: Centro de Estudios Parasitológicos y de Vectores (CEPAVE), CIC-CONICET-UNLP, La Plata - Argentina
+    url:
+
+catalog_developers:
+  - name: Hernán Lucas Pereira
+    affiliation:
+      en: Centro de Estudios Parasitológicos y de Vectores (CEPAVE), CONICET-UNLP, La Plata - Argentina
+      es: Centro de Estudios Parasitológicos y de Vectores (CEPAVE), CONICET-UNLP, La Plata - Argentina
+    url:
+
+  - name: José Luis Pereira
+    affiliation:
+      en: Facultad de Ciencias Naturales y Museo, UNLP, La Plata - Argentina
+      es: Facultad de Ciencias Naturales y Museo, UNLP, La Plata - Argentina
+    url:

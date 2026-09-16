@@ -51,6 +51,6 @@
 const SECTIONS = [
   { key: 'alphabetically', to: '/search/alphabetically' },
   { key: 'geographic', to: '/search/geographic' },
-  { key: 'references', to: '/references' }
+  { key: 'references', to: 'references' }
 ]
 </script>

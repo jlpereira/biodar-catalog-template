@@ -1,0 +1,24 @@
+---
+# Catálogo de mensajes del módulo de referencias.
+#
+# Las citas provienen de TaxonWorks y se muestran tal como fueron
+# publicadas — nunca se traducen.
+
+references:
+  title: Referencias
+  index: Índice alfabético
+  summary: '{total} fuentes en el proyecto'
+  summary_filtered: 'Mostrando {shown} de {total} fuentes'
+  empty: No hay referencias para mostrar.
+  error: 'No se pudieron cargar las referencias: {message}'
+  retry: Reintentar
+
+  filters:
+    title: Filtros
+    in_citation: En la cita
+    in_citation_placeholder: 'Buscar en cualquier parte de la cita... por ejemplo: "Charles Darwin Archives"'
+    author: Autor(es)
+    author_placeholder: Escribir...
+    published_between: Publicado entre
+    reset: Limpiar filtros
+    no_matches: Ninguna referencia coincide con estos filtros.

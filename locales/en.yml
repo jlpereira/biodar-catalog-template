@@ -36,6 +36,12 @@ home:
         in italics.
       cta: View bibliography
 
+  authors:
+    title: Authors
+    subtitle: >-
+      The specialists who compile and curate the taxonomic, bibliographic and
+      distribution data published here.
+
   announcements:
     title: News
     grown: We’ve grown!
@@ -123,9 +129,42 @@ panel:
     legend:
       no_keyword: Uncategorized
 
-references:
-  title: References
-  index: Alphabetical index
-  summary: '{total} sources in the project'
-  empty: There are no references to show.
-  error: 'Could not load the references: {message}'
+about:
+  title: About this catalog
+  subtitle: What the catalog covers, who compiles it and who builds it.
+
+  overview:
+    title: The catalog
+    body: >-
+      This is a second, updated edition of "Especies de Acridomorfos
+      (Orthoptera) de Argentina y Uruguay" (2006). The original list was
+      compiled by C. S. Carbonell from the information he gathered over his
+      scientific career. Genus, species and subspecies names are listed. For
+      each species the catalog gives the synonymies, the geographic
+      distribution, the main host plants, its economic importance according to
+      the categories defined in "The locust and grasshopper agricultural
+      manual" (COPR, 1982), notes of interest on the species and its most
+      relevant bibliographic citations. Species are illustrated with
+      photographs of male and female specimens and of the habitat, where these
+      were taken in the field. The distribution data come from the authors'
+      own fieldwork and from the scientific literature.
+
+  authors:
+    title: Authors
+
+  data:
+    title: The data
+    body: >-
+      The pages are generated live from the project's TaxonWorks database, so
+      what you read is the current state of the data rather than a snapshot
+      frozen at publication. Each taxon page links to the same records in JSON,
+      and its occurrences can be downloaded in Darwin Core format.
+
+  developers:
+    title: Development
+    body: >-
+      This site is powered by TaxonPages, an open-source framework for publishing 
+      taxon pages based on data curated in TaxonWorks. Both platforms are developed 
+      by the Species File Group. 
+      The individuals listed below are responsible for adapting and maintaining this site, 
+      while the catalog’s content and scientific contributions remain the work of its authors.

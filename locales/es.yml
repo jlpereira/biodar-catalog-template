@@ -351,7 +351,6 @@ dwc:
     institutionID: ID de la institución
     modified: Última modificación
     language: Idioma
-    license: Licencia
     rightsHolder: Titular de los derechos
     bibliographicCitation: Cita
     references: Referencias
@@ -459,6 +458,12 @@ home:
         científicos en cursiva.
       cta: Ver bibliografía
 
+  authors:
+    title: Autores
+    subtitle: >-
+      Los especialistas que compilan y curan los datos taxonómicos,
+      bibliográficos y de distribución que se publican acá.
+
   announcements:
     title: Novedades
     grown: ¡Crecimos!
@@ -543,9 +548,44 @@ search:
       few_records_of_minimum_damages: Pocos registros de daños mínimos
       no_economic_damages_registered: Sin perjuicios económicos registrados
 
-references:
-  title: Referencias
-  index: Índice alfabético
-  summary: '{total} fuentes en el proyecto'
-  empty: No hay referencias para mostrar.
-  error: 'No se pudieron cargar las referencias: {message}'
+about:
+  title: Acerca de este catálogo
+  subtitle: Qué abarca el catálogo, quiénes lo compilan y quiénes lo desarrollan.
+
+  overview:
+    title: El catálogo
+    body: >-
+      Esta es una segunda edición actualizada de "Especies de Acridomorfos
+      (Orthoptera) de Argentina y Uruguay" (2006). La lista original fue
+      compilada por C. S. Carbonell a partir de la información que obtuvo a lo
+      largo de su trayectoria científica. Se listan los nombres de géneros,
+      especies y subespecies. Para cada especie se brindan las sinonimias, la
+      distribución geográfica, las principales plantas hospedadoras, su
+      importancia económica de acuerdo a las categorías definidas en "The
+      locust and grasshopper agricultural manual" (COPR, 1982), observaciones
+      de interés sobre la especie y las citas bibliográficas más relevantes
+      para la misma. Las especies se ilustran con fotos de los ejemplares macho
+      y hembra y del hábitat, si las mismas fueron tomadas en el campo. La
+      información de la distribución geográfica se obtuvo a partir de las
+      tareas a campo de los propios autores y de la literatura científica.
+
+  authors:
+    title: Autores
+
+  data:
+    title: Los datos
+    body: >-
+      Las páginas se generan en vivo desde la base de datos del proyecto en
+      TaxonWorks, así que lo que leés es el estado actual de los datos y no una
+      foto congelada al momento de publicarlos. Cada página de taxón enlaza a
+      esos mismos registros en JSON, y sus ocurrencias se pueden descargar en
+      formato Darwin Core.
+
+  developers:
+    title: Desarrollo
+    body: >-
+      Este sitio utiliza TaxonPages, un framework de código abierto para la publicación 
+      de páginas taxonómicas a partir de datos gestionados y curados en TaxonWorks. 
+      Ambas plataformas son desarrolladas por Species File Group. Las personas que se 
+      indican a continuación son responsables de adaptar y mantener este sitio en particular, 
+      mientras que el contenido del catálogo y sus aportes científicos son obra de sus respectivos autores.

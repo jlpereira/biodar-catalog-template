@@ -1,0 +1,24 @@
+---
+# Message catalog for the references module.
+#
+# The citations themselves come from TaxonWorks and are rendered as
+# published — they are never translated.
+
+references:
+  title: References
+  index: Alphabetical index
+  summary: '{total} sources in the project'
+  summary_filtered: 'Showing {shown} of {total} sources'
+  empty: There are no references to show.
+  error: 'Could not load the references: {message}'
+  retry: Retry
+
+  filters:
+    title: Filters
+    in_citation: In citation
+    in_citation_placeholder: 'Search anywhere in the citation... for example: "Charles Darwin Archives"'
+    author: Author(s)
+    author_placeholder: Type...
+    published_between: Published between
+    reset: Clear filters
+    no_matches: No reference matches these filters.
