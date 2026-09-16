@@ -1,6 +1,5 @@
 <template>
   <div class="bg-base-background flex min-h-full flex-col">
-    <!-- Editorial split: copy + search on the left, autoplaying gallery on the right -->
     <section class="relative shrink-0 px-6 pt-12 pb-16 sm:pt-16 lg:pt-20">
       <div
         aria-hidden="true"
@@ -11,18 +10,8 @@
         class="relative container mx-auto grid items-center gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-16"
       >
         <div>
-          <span
-            class="inline-flex items-center gap-2 rounded-full border border-base-border bg-base-foreground px-3 py-1 text-xs font-medium uppercase tracking-wider text-base-soft"
-          >
-            <span
-              class="h-1.5 w-1.5 rounded-full bg-accent"
-              aria-hidden="true"
-            />
-            {{ projectOrder }}
-          </span>
-
           <h1
-            class="mt-5 text-4xl font-bold tracking-tight text-balance text-base-content sm:text-5xl xl:text-6xl"
+            class="mt-5 text-4xl font-bold tracking-wider text-balance uppercase text-base-content sm:text-5xl xl:text-6xl"
           >
             {{ projectName }}
           </h1>

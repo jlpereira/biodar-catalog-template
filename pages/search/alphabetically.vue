@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-base-background min-h-full">
+  <div class="bg-base-foreground min-h-full">
     <div class="px-4">
       <div class="container mx-auto pt-10 pb-6">
         <h1 class="text-3xl font-bold tracking-tight text-base-content">

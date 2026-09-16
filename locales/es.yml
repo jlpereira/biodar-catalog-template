@@ -525,6 +525,24 @@ search:
     no_records: 'No hay registros para {region}.'
     error: 'No se pudo cargar el inventario: {message}'
 
+    uncategorized: Sin categoría
+
+    # Palabras clave de estatus de plaga. TaxonWorks guarda solo el
+    # término en inglés y su color, así que la redacción vive acá,
+    # indexada por ese término. El orden en que la página los muestra
+    # es la escala de severidad de
+    # pages/composables/useRegionKeywords.js, no esta lista.
+    keywords:
+      major_pest_of_many_crops: Plaga mayor de varios cultivos
+      pest_regularly_of_importance: Plaga regularmente de importancia
+      pest_occasionally_of_importance: Plaga ocasionalmente de importancia
+      pest_occasionally_of_localized_importance: Plaga ocasionalmente de importancia localizada
+      a_regular_minor_pest: Plaga menor habitual
+      an_occasional_minor_pest: Plaga ocasional de menor importancia
+      of_very_minor_importance: De muy escasa importancia
+      few_records_of_minimum_damages: Pocos registros de daños mínimos
+      no_economic_damages_registered: Sin perjuicios económicos registrados
+
 references:
   title: Referencias
   index: Índice alfabético

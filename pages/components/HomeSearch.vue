@@ -5,10 +5,6 @@
     >
       <AutocompleteOtu :placeholder="$t('home.search.placeholder')" />
     </div>
-
-    <p class="mt-3 text-sm text-base-soft">
-      {{ $t('home.search.hint') }}
-    </p>
   </div>
 </template>
 
