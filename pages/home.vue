@@ -2,6 +2,7 @@
   <div class="bg-base-background flex min-h-full flex-col">
     <section class="relative shrink-0 px-6 pt-12 pb-16 sm:pt-16 lg:pt-20">
       <div
+        v-if="false"
         aria-hidden="true"
         class="hero-backdrop pointer-events-none absolute inset-0"
       />
@@ -32,7 +33,6 @@
     </section>
 
     <HomeExplore class="grow" />
-
     <HomeAuthors />
   </div>
 </template>
