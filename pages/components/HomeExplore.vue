@@ -12,7 +12,7 @@
         <router-link
           v-for="(section, index) in SECTIONS"
           :key="section.to"
-          :to="section.to"
+          :to="{ name: section.to }"
           class="group/card relative flex flex-col overflow-hidden rounded-2xl border border-base-border bg-base-background p-6 transition-colors hover:border-accent/50"
         >
           <span

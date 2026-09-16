@@ -1,81 +1,78 @@
 <template>
-  <div class="container mx-auto">
-    <VCard class="mt-12 py-8 rounded-lg">
-      <div
-        class="bg-primary text-primary-content px-4 py-1 inline-block shadow-md -ml-2 pl-10"
-      >
-        Acerca de este catalogo
-      </div>
+  <div class="bg-base-foreground min-h-full">
+    <div class="px-4">
+      <div class="container mx-auto pt-10 pb-6">
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">
+          {{ $t('about.title') }}
+        </h1>
 
-      <div class="px-8">
-        <div class="text-normal py-6 mb-6">
-          Esta es una segunda edición actualizada de "Especies de Acridomorfos
-          (Orthoptera) de Argentina y Uruguay" (2006). La lista original fue
-          compilada por C.S. Carbonell a partir de la información que obtuvo a
-          lo largo de su trayectoria científica. Nombres de géneros, especies y
-          subespecies han sito listados. Para cada especie se brindan las
-          sinonimias, la distribución geográfica, las principales plantas
-          hospedadoras, su importancia económica de acuerdo a las categorías
-          definidas en "The locust and grasshopper agricultural manual" (COPR,
-          1982), observaciones de interés sobre la especie y las citas
-          bibliográficas más relevantes para la misma. Las especies se ilustran
-          con fotos de los ejemplares macho, hembra y del hábitat, si las mismas
-          fueron tomadas en el campo. La información de la distribución
-          geográfica se obtuvo a partir de las tareas a campo de los propios
-          autores y de la literatura científica.
-        </div>
-
-        <div class="flex flex-col gap-6">
-          <div>
-            <span class="font-semibold block">Carlos S. Carbonell †</span>
-            <span
-              >Facultad de Ciencias Universidad de la Republica Montevideo -
-              Uruguay</span
-            >
-          </div>
-          <div>
-            <span class="font-semibold block">Maria Marta Cigliano</span>
-            <span
-              >Div. Entomología, Museo de La Plata; CEPAVE CONICET-UNLP La Plata
-              - Argentina</span
-            >
-          </div>
-          <div>
-            <span class="font-semibold block">Carlos E. Lange</span>
-            <span
-              >Centro de Estudios Parasitológicos y de Vectores (CEPAVE),
-              CIC-CONICET-UNLP La Plata - Argentina</span
-            >
-          </div>
-        </div>
+        <p class="mt-2 max-w-2xl text-sm text-base-soft">
+          {{ $t('about.subtitle') }}
+        </p>
       </div>
-    </VCard>
+    </div>
 
-    <VCard class="my-6 py-8 rounded-lg">
-      <div
-        class="bg-primary text-primary-content px-4 py-1 inline-block shadow-md -ml-2 pl-10"
-      >
-        Developers
-      </div>
+    <div class="px-4 pb-16">
+      <div class="container mx-auto space-y-12">
+        <section>
+          <h2 class="text-2xl font-bold tracking-tight text-base-content">
+            {{ $t('about.overview.title') }}
+          </h2>
 
-      <div class="px-8">
-        <div class="flex flex-col gap-6 mt-6">
-          <div>
-            <span class="font-semibold block">Hernán Lucas Pereira</span>
-            <span
-              >Centro de Estudios Parasitológicos y de Vectores (CEPAVE),
-              CONICET-UNLP La Plata - Argentina</span
-            >
-          </div>
-          <div>
-            <span class="font-semibold block">José Luis Pereira</span>
-            <span
-              >Facultad de Ciencias Naturales y Museo, UNLP - La Plata -
-              Argentina</span
-            >
-          </div>
-        </div>
+          <p class="mt-4 max-w-4xl leading-relaxed text-base-content">
+            {{ $t('about.overview.body') }}
+          </p>
+        </section>
+
+        <section v-if="authors.length">
+          <h2 class="text-2xl font-bold tracking-tight text-base-content">
+            {{ $t('about.authors.title') }}
+          </h2>
+
+          <PeopleList
+            :people="authors"
+            class="mt-6"
+          />
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold tracking-tight text-base-content">
+            {{ $t('about.data.title') }}
+          </h2>
+
+          <p class="mt-4 max-w-4xl leading-relaxed text-base-content">
+            {{ $t('about.data.body') }}
+          </p>
+        </section>
+
+        <section v-if="developers.length">
+          <h2 class="text-2xl font-bold tracking-tight text-base-content">
+            {{ $t('about.developers.title') }}
+          </h2>
+
+          <p class="mt-4 max-w-4xl leading-relaxed text-base-content">
+            {{ $t('about.developers.body') }}
+          </p>
+
+          <PeopleList
+            :people="developers"
+            class="mt-6"
+          />
+        </section>
       </div>
-    </VCard>
+    </div>
   </div>
 </template>
+
+<script setup>
+import PeopleList from './components/PeopleList.vue'
+import { usePeople } from './composables/usePeople.js'
+
+const {
+  catalog_authors: catalogAuthors,
+  catalog_developers: catalogDevelopers
+} = __APP_ENV__
+
+const authors = usePeople(catalogAuthors)
+const developers = usePeople(catalogDevelopers)
+</script>

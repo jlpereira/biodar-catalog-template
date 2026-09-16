@@ -32,6 +32,8 @@
     </section>
 
     <HomeExplore class="grow" />
+
+    <HomeAuthors />
   </div>
 </template>
 
@@ -40,22 +42,12 @@ import HomeSearch from './components/HomeSearch.vue'
 import HomeStats from './components/HomeStats.vue'
 import HomeGallery from './components/HomeGallery.vue'
 import HomeExplore from './components/HomeExplore.vue'
+import HomeAuthors from './components/HomeAuthors.vue'
 
 const { project_name: projectName, project_order: projectOrder } = __APP_ENV__
 </script>
 
 <style scoped>
-/*
- * Two stacked background layers, both painted inside the section's own box so
- * nothing can bleed out and reintroduce horizontal overflow:
- *
- *   1. a soft lift, sitting behind the gallery card, so the card rests on a
- *      surface instead of floating in flat colour;
- *   2. a fine dot grid that gives the whole hero field some material.
- *
- * Both layers read theme variables, so they follow light and dark on their own.
- * The mask fades the grid out before the explore band so the two do not fight.
- */
 .hero-backdrop {
   background-image:
     radial-gradient(
