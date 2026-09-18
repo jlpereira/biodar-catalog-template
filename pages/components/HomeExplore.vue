@@ -7,7 +7,7 @@
         {{ $t('home.sections.title') }}
       </h2>
 
-      <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <router-link
           v-for="section in SECTIONS"
           :key="section.to"
@@ -58,17 +58,20 @@
 <script setup>
 import ArtNames from './explore/ArtNames.vue'
 import ArtGeographic from './explore/ArtGeographic.vue'
+import ArtClassification from './explore/ArtClassification.vue'
 import ArtReferences from './explore/ArtReferences.vue'
 
 const SECTIONS = [
   { key: 'alphabetically', to: '/search/alphabetically' },
   { key: 'geographic', to: '/search/geographic' },
+  { key: 'classification', to: '/search/classification' },
   { key: 'references', to: 'references' }
 ]
 
 const ART = {
   alphabetically: ArtNames,
   geographic: ArtGeographic,
+  classification: ArtClassification,
   references: ArtReferences
 }
 </script>

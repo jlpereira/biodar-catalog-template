@@ -35,16 +35,6 @@
           />
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold tracking-tight text-base-content">
-            {{ $t('about.data.title') }}
-          </h2>
-
-          <p class="mt-4 max-w-4xl leading-relaxed text-base-content">
-            {{ $t('about.data.body') }}
-          </p>
-        </section>
-
         <section v-if="developers.length">
           <h2 class="text-2xl font-bold tracking-tight text-base-content">
             {{ $t('about.developers.title') }}

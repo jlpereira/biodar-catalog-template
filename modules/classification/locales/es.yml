@@ -1,0 +1,7 @@
+classification:
+  title: Clasificación
+  subtitle: Recorré el catálogo por su jerarquía taxonómica.
+  empty: No hay nada por debajo de este nombre.
+  branch_error: No se pudo cargar esta rama.
+  error: 'No se pudo cargar la clasificación: {message}'
+  retry: Reintentar

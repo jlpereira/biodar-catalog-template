@@ -451,6 +451,13 @@ home:
         registrados allí.
       cta: Abrir el mapa
 
+    classification:
+      title: Clasificación
+      description: >-
+        Recorré la jerarquía taxonómica, de la superfamilia a la especie,
+        abriendo una rama por vez.
+      cta: Abrir el árbol
+
     references:
       title: Referencias
       description: >-
@@ -571,15 +578,6 @@ about:
 
   authors:
     title: Autores
-
-  data:
-    title: Los datos
-    body: >-
-      Las páginas se generan en vivo desde la base de datos del proyecto en
-      TaxonWorks, así que lo que leés es el estado actual de los datos y no una
-      foto congelada al momento de publicarlos. Cada página de taxón enlaza a
-      esos mismos registros en JSON, y sus ocurrencias se pueden descargar en
-      formato Darwin Core.
 
   developers:
     title: Desarrollo

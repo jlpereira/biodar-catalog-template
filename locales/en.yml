@@ -29,6 +29,13 @@ home:
         there.
       cta: Open the map
 
+    classification:
+      title: Classification
+      description: >-
+        Walk the taxonomic hierarchy, from superfamily down to species, one
+        branch at a time.
+      cta: Open the tree
+
     references:
       title: References
       description: >-
@@ -85,7 +92,7 @@ home:
         alt: Red and orange grasshopper photographed in close-up
       macro:
         title: Head and antennae
-        caption: Antennal shape and facial profile separate many genera.
+        caption: Antennal shape and facial profile separate mDichany genera.
         alt: Frontal macro photograph of a green grasshopper's head
 
 search:
@@ -151,14 +158,6 @@ about:
 
   authors:
     title: Authors
-
-  data:
-    title: The data
-    body: >-
-      The pages are generated live from the project's TaxonWorks database, so
-      what you read is the current state of the data rather than a snapshot
-      frozen at publication. Each taxon page links to the same records in JSON,
-      and its occurrences can be downloaded in Darwin Core format.
 
   developers:
     title: Development

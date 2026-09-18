@@ -23,7 +23,7 @@
             {{ $t('home.tagline', { order: projectOrder }) }}
           </p>
 
-          <HomeSearch class="mt-8 max-w-2xl" />
+          <HomeSearch class="mt-8" />
 
           <HomeStats class="mt-10" />
         </div>

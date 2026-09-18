@@ -12,7 +12,14 @@ taxa_page:
               cluster: false
               absences: 'off'
           - panel:descendants
-          - panel:content
+          - id: panel:content
+            bind:
+              en:
+                params:
+                  topic_id: [2, 3, 4, 6, 8]
+              es:
+                params:
+                  topic_id: [2, 3, 5, 7, 9]
           - panel:keys
           - panel:statistics
           - panel:sounds

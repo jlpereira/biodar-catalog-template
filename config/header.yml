@@ -2,18 +2,31 @@
 header_logo_url: ''
 header_logo_text: ACRIDOMORPH
 header_links:
-  - label: Home
+  - label:
+      en: Home
+      es: Inicio
     link: /
-  - label: Search
+  - label:
+      en: Search
+      es: Búsqueda
     submenu:
-      - label: Alphabetically
+      - label:
+          en: Alphabetically
+          es: Alfabéticamente
         link: /search/alphabetically
-      - label: Geographic Distribution
+      - label:
+          en: Geographic Distribution
+          es: Distribución Geográfica
         link: /search/geographic
-  - label: Bibliography
-    link: /resources/tw/filter/bibliography
-  - label: About
-    link: /about
-  - label: References
+      - label:
+          en: Classification
+          es: Clasificación
+        link: /search/classification
+  - label:
+      en: References
+      es: Referencias
     link: /references
-    submenu: []
+  - label:
+      en: About
+      es: Acerca de
+    link: /about

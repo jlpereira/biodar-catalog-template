@@ -1,0 +1,7 @@
+classification:
+  title: Classification
+  subtitle: Browse the catalogue down its taxonomic hierarchy.
+  empty: Nothing below this name.
+  branch_error: This branch could not be loaded.
+  error: 'Could not load the classification: {message}'
+  retry: Retry
